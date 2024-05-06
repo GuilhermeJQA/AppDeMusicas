@@ -1,0 +1,107 @@
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  max-width: 90%; /* Alteração para ocupar 90% da largura */
+  width: 100%;
+  height: 90%; /* Alteração para ocupar 90% da altura */
+  margin: 0 10px;
+  box-shadow: 0 1px 10px gray;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.logo {
+  background-color: #aeaeae;
+  width: 130px;
+  margin: auto;
+  height: 30%; /* Reduzindo a altura do logo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.logo i {
+  font-size: 120px; /* Reduzindo o tamanho do ícone */
+}
+
+.musicName {
+  white-space: nowrap; 
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 10px; /* Adicionando um espaço entre o logo e o nome da música */
+}
+
+img {
+
+  width: 100px;
+  height: 100px;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px; /* Adicione um espaçamento superior opcional */
+}
+.controls button {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.controls i {
+  font-size: 40px; /* Reduzindo o tamanho dos ícones */
+  padding: 5px;
+  border-radius: 50%;
+  background-color: #f7f7f7;
+  transition: all .2s;
+}
+
+.controls i:hover {
+  background-color: lightgray;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.time span {
+  font-size: 16px; /* Reduzindo o tamanho da fonte */
+  color: #333;
+}
+
+.footer {
+  width: 100%;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: #ddd;
+  cursor: pointer;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.progress {
+  height: 8px;
+  background-color: #333;
+  border-radius: 5px;
+}
