@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import style from "./MusicApp.module.css";
-import { prevNextMusic, playPause, updateTime, chamaIsso, tempo } from "./script.js";
+import { prevNextMusic, playPause, updateTime, tempo } from "./script.js";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import songs from "./songs.js";
 const MusicApp = () => {
     const [isPlaying, setIsPlaying] = useState(true);
 
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
     const handlePlayPause = () => {
-        setIsPlaying(!isPlaying); // Alterna o estado de reprodução
-        playPause(); // Chama a função playPause para controlar a reprodução
-        setCurrentSongIndex(type === "prev" ? currentSongIndex - 1 : currentSongIndex + 1); // Atualiza o índice da música atual
+        setIsPlaying(!isPlaying); 
+        playPause(); 
+        setCurrentSongIndex(type === "prev" ? currentSongIndex - 1 : currentSongIndex + 1); 
     };
   return (
     <body className={style.body}>
-      <div className="player">
+
+      <h2>Music App</h2>
+      <div className={style.player}>
 
         <div className={style.logo}>
+          <Icon name="headphones" size={40} color="black"/>
         </div>
 
         <span className={style.musicName} id="musicName"></span>
@@ -25,17 +27,17 @@ const MusicApp = () => {
         <audio className={style.player} onTimeUpdate={updateTime} id="player" src=""></audio>
         <div className={style.controls}>
       <button onClick={() => prevNextMusic("prev")} id="prevButton">
-        <Icon name="backward" size={30} color="black" /> {/* Ícone de voltar */}
+        <Icon name="backward" size={30} color="black" /> 
       </button>
       <button onClick={handlePlayPause} id="playPauseButton">
             {isPlaying ? (
-              <Icon name="pause" size={30} color="black" /> // Ícone de pause quando estiver reproduzindo
+              <Icon name="pause" size={30} color="black" /> 
             ) : (
-              <Icon name="play" size={30} color="black" /> // Ícone de play quando estiver pausado
+              <Icon name="play" size={30} color="black" />
             )}
           </button>
       <button onClick={() => prevNextMusic("next")} id="nextButton">
-        <Icon name="forward" size={30} color="black" /> {/* Ícone de avançar */}
+        <Icon name="forward" size={30} color="black" /> 
       </button>
     </div>
         <div className={style.footer}>
@@ -48,6 +50,7 @@ const MusicApp = () => {
           </div>
         </div>
       </div>
+      <h4>(Avançar para tocar)</h4>
     </body>
   );
 };

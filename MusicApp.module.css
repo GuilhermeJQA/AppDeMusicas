@@ -1,31 +1,35 @@
 body {
   height: 100vh;
   width: 100%;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  background-color: #004E64;
 }
 
+
 .player {
+  background-color: #25A18E;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-direction: column;
-  max-width: 90%; /* Alteração para ocupar 90% da largura */
-  width: 100%;
-  height: 90%; /* Alteração para ocupar 90% da altura */
-  margin: 0 10px;
-  box-shadow: 0 1px 10px gray;
+  flex-direction: column;;
+  max-width: 90%;
+  width: 20%;
+  height: 50%;
+  margin: 7rem auto 0 auto;
+  box-shadow: 0 1px 15px rgb(0, 0, 0);
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .logo {
   background-color: #aeaeae;
   width: 130px;
   margin: auto;
-  height: 30%; /* Reduzindo a altura do logo */
+  height: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +37,7 @@ body {
 }
 
 .logo i {
-  font-size: 120px; /* Reduzindo o tamanho do ícone */
+  font-size: 120px;
 }
 
 .musicName {
@@ -41,11 +45,10 @@ body {
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 10px; /* Adicionando um espaço entre o logo e o nome da música */
+  margin-top: 10px;
 }
 
 img {
-
   width: 100px;
   height: 100px;
   margin-top:10px;
@@ -56,17 +59,18 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10px; /* Adicione um espaçamento superior opcional */
+  margin-top: 10px; 
 }
 .controls button {
-  border: none;
-  background-color: white;
+  border:none;
+  background-color: #25A18E;
   cursor: pointer;
   padding: 1rem;
+
 }
 
 .controls i {
-  font-size: 40px; /* Reduzindo o tamanho dos ícones */
+  font-size: 40px; 
   padding: 5px;
   border-radius: 50%;
   background-color: #f7f7f7;
@@ -77,7 +81,7 @@ img {
   background-color: lightgray;
 }
 
-.time {
+.time{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -89,7 +93,8 @@ img {
 }
 
 .footer {
-  width: 100%;
+  width: 80%;
+  margin: auto;
 }
 
 .progress-bar {
@@ -104,4 +109,12 @@ img {
   height: 8px;
   background-color: #333;
   border-radius: 5px;
+}
+
+@media(max-width:1025px){
+  .player{width: 40%;}
+}
+
+@media(max-width:520px){
+  .player{width: 60%;}
 }
