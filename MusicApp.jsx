@@ -1,16 +1,81 @@
 import React, { useState } from "react";
 import style from "./MusicApp.module.css";
-import { prevNextMusic, playPause, updateTime, tempo } from "./script.js";
+
 import Icon from 'react-native-vector-icons/FontAwesome';
+import songs from "./songs.js";
+let index = 0;
 const MusicApp = () => {
     const [isPlaying, setIsPlaying] = useState(true);
-
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
-
+    
+    const prevNextMusic = (type) => {
+      if ((type === "next" && index + 1 === songs.length) || type === "init") {
+        index = 0;
+      } else if (type === "prev" && index === 0) {
+        index = songs.length - 1;
+      } else {
+        index = type === "prev" ? index - 1 : index + 1;
+      }
+      setIsPlaying(true)
+      const player = document.querySelector("#player");
+      const musicName = document.querySelector("#musicName");
+      setCurrentSongIndex(type === "prev" ? currentSongIndex - 1 : currentSongIndex + 1); 
+      if (player && musicName) {
+        player.src = songs[index].src;
+        musicName.innerHTML = songs[index].name;
+      }
+      playPause();
+      updateTime();
+    };
+    const updateTime = () => {
+      const player = document.querySelector("#player");
+      const currentTime = document.querySelector("#currentTime");
+      const duration = document.querySelector("#duration");
+  
+      if (player && currentTime && duration) {
+          const currentMinutes = Math.floor(player.currentTime / 60);
+          const currentSeconds = Math.floor(player.currentTime % 60);
+          currentTime.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
+  
+          let formattedDuration;
+          if (isNaN(player.duration)) {
+              formattedDuration = '00:00';
+          } else {
+              const durationMinutes = Math.floor(player.duration / 60);
+              const durationSeconds = Math.floor(player.duration % 60);
+              formattedDuration = `${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
+          }
+          duration.textContent = formattedDuration;
+      }
+  };
+  
+  updateTime();
+    
+    const tempo = (e) => {
+      const player = document.querySelector("#player");
+      const progressBar = document.querySelector(".progress-bar");
+    
+      if (player && progressBar) {
+        const newTime = (e.offsetX / progressBar.offsetWidth) * player.duration;
+        player.currentTime = newTime;
+      }
+    };
+    const playPause = () => {
+      const player = document.querySelector("#player");
+      const playPauseButton = document.querySelector("#playPauseButton");
+      if (player && playPauseButton) {
+        if (player.paused) {
+          player.play();
+          
+        } else {
+          player.pause();
+        }
+      }
+    };
+    
     const handlePlayPause = () => {
         setIsPlaying(!isPlaying); 
         playPause(); 
-        setCurrentSongIndex(type === "prev" ? currentSongIndex - 1 : currentSongIndex + 1); 
     };
   return (
     <body className={style.body}>
